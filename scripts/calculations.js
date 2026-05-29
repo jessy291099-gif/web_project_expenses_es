@@ -23,3 +23,13 @@ function calculateAverageExpense() {
 function calculateBalance() {
   return budgetValue - totalExpensesValue;
 }
+let balanceColor = "green";
+function updateBalanceColor() {
+  if (calculateBalance < 0) {
+    balanceColor = "red";
+  } else if (calculateBalance < budgetValue * 0.25) {
+    balanceColor = "orange";
+  } else {
+    balanceColor = "green";
+  }
+}
