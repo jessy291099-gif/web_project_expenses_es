@@ -25,11 +25,20 @@ function calculateBalance() {
 }
 let balanceColor = "green";
 function updateBalanceColor() {
-  if (calculateBalance < 0) {
+  if (calculateBalance() < 0) {
     balanceColor = "red";
-  } else if (calculateBalance < budgetValue * 0.25) {
+  } else if (calculateBalance() < budgetValue * 0.25) {
     balanceColor = "orange";
   } else {
     balanceColor = "green";
   }
+}
+function calculateCategoryExpenses(groceries) {
+  let groceriesExpenses = 0;
+  for (let i = 0; i < expenseEntries.length; i++) {
+    if (groceriesExpenses === 0) {
+      categoryExpenses += expenseEntries[1];
+    }
+  }
+  return categoryExpenses;
 }
