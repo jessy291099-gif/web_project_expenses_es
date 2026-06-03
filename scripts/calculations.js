@@ -33,12 +33,46 @@ function updateBalanceColor() {
     balanceColor = "green";
   }
 }
-function calculateCategoryExpenses(groceries) {
-  let groceriesExpenses = 0;
+function calculateCategoryExpenses(category) {
+  let categoryTotal = 0;
   for (let i = 0; i < expenseEntries.length; i++) {
-    if (groceriesExpenses === 0) {
-      categoryExpenses += expenseEntries[1];
+    if (expenseEntries[i][0] === category) {
+      categoryTotal += expenseEntries[i][1];
     }
   }
-  return categoryExpenses;
+  return categoryTotal;
+}
+function calculateLargestCategory() {
+  const categories = [
+    "groceries",
+    "restaurants",
+    "transport",
+    "home",
+    "subscriptions",
+  ];
+
+  let categoriesData = [];
+
+  for (let i = 0; i < categories.length; i++) {
+    const categoryName = categories[i];
+    const total = calculateCategoryExpenses(categoryName);
+    categoriesData.push([categoryName, total]);
+  }
+
+  let largestCategory = categoriesData[0][0];
+  let largestTotal = categoriesData[0][1];
+
+  for (let i = 1; i < categoriesData.length; i++) {
+    if (categoriesData[i][1] > largestTotal) {
+      largestTotal = categoriesData[i][1];
+      largestCategory = categoriesData[i][0]; // Guardar el nombre de la categoría
+    }
+  }
+
+  return largestCategory;
+}
+
+function addExpenseEntry(entry) {
+  expenseEntries.push(entry);
+  totalExpensesValue += entry[1];
 }
