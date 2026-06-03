@@ -65,7 +65,7 @@ function calculateLargestCategory() {
   for (let i = 1; i < categoriesData.length; i++) {
     if (categoriesData[i][1] > largestTotal) {
       largestTotal = categoriesData[i][1];
-      largestCategory = categoriesData[i][0]; // Guardar el nombre de la categoría
+      largestCategory = categoriesData[i][0];
     }
   }
 
